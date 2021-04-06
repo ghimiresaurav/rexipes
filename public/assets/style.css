@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: aliceblue;
+  left: 0;
+  top: 0;
+  font-family: "Montserrat";
+}
+
+header,
+footer {
+  width: 100vw;
+  background-color: goldenrod;
+}
+
+header {
+  height: 8vh;
+  display: flex;
+  align-items: center;
+}
+
+#notification {
+  position: absolute;
+  top: 35px;
+  width: 100vw;
+  font-weight: 600;
+  text-align: center;
+  transition: 500ms;
+}
+
+#logo {
+  font-weight: 600;
+  padding-left: 30px;
+}
+
+#post,
+#view {
+  left: inherit;
+  width: inherit;
+  display: flex;
+  align-items: center;
+}
+
+#post {
+  top: inherit;
+  height: 100vh;
+  justify-content: center;
+}
+
+#post-form {
+  margin-top: -45px;
+  border: 2px solid goldenrod;
+  border-radius: 10px;
+  display: inherit;
+  flex-direction: column;
+  align-items: inherit;
+  height: 80%;
+  width: 30%;
+  background-color: rgb(223, 240, 255);
+}
+
+input,
+textarea {
+  width: 80%;
+  outline: none;
+  border: none;
+  margin: 40px;
+  background-color: transparent;
+  border-bottom: 1px solid black;
+}
+
+input {
+  height: 30px;
+}
+
+button {
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+/* button:hover {
+} */
+
+#view {
+  top: 100vh;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#field {
+  width: 65vw;
+  height: inherit;
+}
+
+.posts {
+  width: 100%;
+  /* background-color: hsl(200, 74%, 85%); */
+  background-color: rgb(198, 228, 255);
+  border: 2px solid goldenrod;
+  border-radius: 30px;
+  padding: 30px;
+  margin: 15px 0;
+}
+
+.post-header span {
+  font-weight: 600;
+}
+
+.post-body {
+  margin-left: 10px;
+}
+
+ol li {
+  margin-left: 25px;
+}
+
+.post-images {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+img {
+  height: auto;
+}
+
+footer {
+  height: 10vh;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer a {
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+}

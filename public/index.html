@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AWESOME RECIPES</title>
+    <link rel="stylesheet" href="./assets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div id="logo">
+        <h1>REXIPES <i class="fas fa-utensils"></i></h1>
+      </div>
+    </header>
+    <div id="notification"></div>
+    <div id="post">
+      <form id="post-form" onsubmit="submitRecipe(event)">
+        <h3 style="margin-top: 10px">Post a recipe</h3>
+        <input
+          type="text"
+          name="title"
+          id="recipe-title"
+          placeholder="Name of the food"
+          required
+        />
+        <input
+          type="text"
+          name="ingredients"
+          id="recipe-ing"
+          placeholder="Ingredients(separate with commas)"
+          required
+        />
+        <textarea
+          name="description"
+          id="recipe-des"
+          cols="30"
+          rows="2"
+          placeholder="Describe the procedure here"
+          required
+        ></textarea>
+        <input
+          type="text"
+          name="username"
+          id="recipe-user"
+          placeholder="Your Name"
+          required
+        />
+        <input
+          type="file"
+          name="images"
+          id="file-input"
+          accept="image/*"
+          multiple
+        />
+        <button type="submit">Submit recipe</button>
+      </form>
+    </div>
+
+    <div id="view">
+      <div id="field">
+        <!-- <div class="posts">
+          <div class="post-header">
+            <span>Saurav Ghimire</span> posted <span>Nepali Food</span>
+          </div>
+          <br />
+          <div class="post-body">
+            <div class="ingredients">
+              <ol>
+                Ingredients:
+                <li>Rice</li>
+                <li>Water</li>
+                <li>Beans</li>
+                <li>Potatoes</li>
+                <li>Onion</li>
+              </ol>
+            </div>
+            <br />
+            <div class="post-images">
+              <img src="./assets/images/img1.jpg" alt="" />
+              <img src="./assets/images/img2.jpg" alt="" />
+              <img src="./assets/images/img3.jpg" alt="" />
+            </div>
+            <br />
+
+            <div class="description">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor
+              quia dicta exercitationem ullam neque nobis blanditiis ex ut nihil
+              quisquam, error ipsam illum quae esse reprehenderit obcaecati,
+              dignissimos, nemo natus! At officiis quisquam atque nam molestiae
+              doloremque, aliquid, laboriosam perspiciatis eos assumenda
+              aspernatur! Nesciunt rem quas, sit tempore, voluptate tempora
+              expedita quod magnam alias dolor aspernatur veritatis ratione eos
+              corrupti. Veniam, at sint impedit voluptatum earum reprehenderit
+              maiores inventore natus similique ducimus quasi nisi nemo iusto
+              vel, dolorum unde a aliquam. Magnam unde nemo odit laboriosam
+              quibusdam reprehenderit repellat libero. Vel eum alias possimus
+              vero cupiditate libero officiis, recusandae impedit numquam
+              quisquam nobis, deserunt quibusdam maxime molestias tenetur, sint
+              architecto tempore iste nostrum magni ea iusto voluptatem harum
+              dolores. Tempore. Molestias, explicabo quo id eum repellendus
+              consectetur error accusantium molestiae optio voluptate voluptatum
+              voluptatibus at laborum eos amet odio distinctio quod, voluptates
+              quia ipsum modi reiciendis minima. Adipisci, illo commodi.
+            </div>
+          </div>
+        </div>
+
+        <div class="posts">
+          <div class="post-header">
+            <span>Saurav Ghimire</span> posted <span>Nepali Food</span>
+          </div>
+          <br />
+
+          <div class="post-body">
+            <div class="ingredients">
+              <ol>
+                Ingredients:
+                <li>Rice</li>
+                <li>Water</li>
+                <li>Beans</li>
+                <li>Potatoes</li>
+                <li>Onion</li>
+              </ol>
+            </div>
+            <br />
+
+            <div class="post-images">
+              <img src="./assets/images/img1.jpg" alt="" />
+              <img src="./assets/images/img2.jpg" alt="" />
+              <img src="./assets/images/img3.jpg" alt="" />
+            </div>
+            <br />
+
+            <div class="description">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor
+              quia dicta exercitationem ullam neque nobis blanditiis ex ut nihil
+              quisquam, error ipsam illum quae esse reprehenderit obcaecati,
+              dignissimos, nemo natus! At officiis quisquam atque nam molestiae
+              doloremque, aliquid, laboriosam perspiciatis eos assumenda
+              aspernatur! Nesciunt rem quas, sit tempore, voluptate tempora
+              expedita quod magnam alias dolor aspernatur veritatis ratione eos
+              corrupti. Veniam, at sint impedit voluptatum earum reprehenderit
+              maiores inventore natus similique ducimus quasi nisi nemo iusto
+              vel, dolorum unde a aliquam. Magnam unde nemo odit laboriosam
+              quibusdam reprehenderit repellat libero. Vel eum alias possimus
+              vero cupiditate libero officiis, recusandae impedit numquam
+              quisquam nobis, deserunt quibusdam maxime molestias tenetur, sint
+              architecto tempore iste nostrum magni ea iusto voluptatem harum
+              dolores. Tempore. Molestias, explicabo quo id eum repellendus
+              consectetur error accusantium molestiae optio voluptate voluptatum
+              voluptatibus at laborum eos amet odio distinctio quod, voluptates
+              quia ipsum modi reiciendis minima. Adipisci, illo commodi.
+            </div>
+          </div>
+        </div>
+
+        <div class="posts">
+          <div class="post-header">
+            <span>Saurav Ghimire</span> posted <span>Nepali Food</span>
+          </div>
+          <br />
+
+          <div class="post-body">
+            <div class="ingredients">
+              <ol>
+                Ingredients:
+                <li>Rice</li>
+                <li>Water</li>
+                <li>Beans</li>
+                <li>Potatoes</li>
+                <li>Onion</li>
+              </ol>
+            </div>
+            <br />
+
+            <div class="post-images">
+              <img src="./assets/images/img1.jpg" alt="" />
+              <img src="./assets/images/img2.jpg" alt="" />
+              <img src="./assets/images/img3.jpg" alt="" />
+            </div>
+            <br />
+
+            <div class="description">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor
+              quia dicta exercitationem ullam neque nobis blanditiis ex ut nihil
+              quisquam, error ipsam illum quae esse reprehenderit obcaecati,
+              dignissimos, nemo natus! At officiis quisquam atque nam molestiae
+              doloremque, aliquid, laboriosam perspiciatis eos assumenda
+              aspernatur! Nesciunt rem quas, sit tempore, voluptate tempora
+              expedita quod magnam alias dolor aspernatur veritatis ratione eos
+              corrupti. Veniam, at sint impedit voluptatum earum reprehenderit
+              maiores inventore natus similique ducimus quasi nisi nemo iusto
+              vel, dolorum unde a aliquam. Magnam unde nemo odit laboriosam
+              quibusdam reprehenderit repellat libero. Vel eum alias possimus
+              vero cupiditate libero officiis, recusandae impedit numquam
+              quisquam nobis, deserunt quibusdam maxime molestias tenetur, sint
+              architecto tempore iste nostrum magni ea iusto voluptatem harum
+              dolores. Tempore. Molestias, explicabo quo id eum repellendus
+              consectetur error accusantium molestiae optio voluptate voluptatum
+              voluptatibus at laborum eos amet odio distinctio quod, voluptates
+              quia ipsum modi reiciendis minima. Adipisci, illo commodi.
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <footer>
+      <h1 id="thankyou">
+        Thank you for visiting! <i class="far fa-smile-beam"></i>
+      </h1>
+      <a href="#logo">Jump to top <i class="fas fa-utensils"></i></a>
+    </footer>
+    <script src="./script.js"></script>
+  </body>
+</html>
