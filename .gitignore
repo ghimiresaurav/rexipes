@@ -2,3 +2,4 @@ node_modules
 public/uploads/images/*
 test.rest
 dump.txt
+database_commands.txt

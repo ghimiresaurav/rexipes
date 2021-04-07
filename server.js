@@ -56,12 +56,36 @@ app.get("/view", (req, res) => {
         async (err, re) => {
           if (err) throw err;
 
-          all.push({
-            username: re[0].user_name,
-            title: elem.title,
-            ingredients: elem.ingredients.split(", "),
-            description: elem.description,
-          });
+          db.query(
+            `SELECT * FROM images WHERE recipe_id = '${elem.recipe_id}';`,
+            async (err, images) => {
+              if (err) throw err;
+
+              if (images.length) {
+                const imageLinks = images[0].links
+                  .split(", ")
+                  .filter((elem) => elem && elem);
+
+                all.push({
+                  id: elem.recipe_id,
+                  username: re[0].user_name,
+                  title: elem.title,
+                  ingredients: elem.ingredients.split(", "),
+                  images: imageLinks,
+                  description: elem.description,
+                });
+
+                // all[all.length - 1].images = imageLinks;
+              } else
+                all.push({
+                  id: elem.recipe_id,
+                  username: re[0].user_name,
+                  title: elem.title,
+                  ingredients: elem.ingredients.split(", "),
+                  description: elem.description,
+                });
+            }
+          );
         }
       );
       return all;
@@ -70,26 +94,22 @@ app.get("/view", (req, res) => {
   });
 });
 
-//recipe_id(PRIMARY KEY), description, ingredients, user_id
-//user_id(PRIMARY KEY), user_name
-//recipe_id, images
-
 app.post("/new-recipe", upload.array("images"), (req, res) => {
-  console.log("here");
   const { files } = req;
   const recipe = req.body;
-  console.log(recipe);
 
   if (files.length) {
     const links = files.reduce(
-      (paths, elem) => `${paths}, ${elem.path.replace(/\\/g, "/")}`,
+      (paths, elem) =>
+        `${paths}, .${elem.path.replace(/\\/g, "/").split("public")[1]}`,
       ``
     );
+
     const id = parseInt(files[0].destination.split("-")[1]);
     const sql = `INSERT INTO images (recipe_id, links) VALUES ('${id}', '${links}')`;
-    console.log(sql);
     db.query(sql);
-  } else console.log("nofiles");
+  }
+
   //check whether user exists or not
   db.query(
     `SELECT * FROM user_details WHERE user_name = '${recipe.username}';`,
@@ -106,20 +126,18 @@ app.post("/new-recipe", upload.array("images"), (req, res) => {
     }
   );
 
-  //add the new recipe to database after 20 milliseconds
+  //add the new recipe to database after 50 milliseconds
   setTimeout(() => {
     db.query(
       `SELECT * FROM user_details WHERE user_name = '${recipe.username}';`,
       async (err, result) => {
         if (err) throw err;
-        console.log(result);
         const sql = `INSERT INTO recipes (title, ingredients, description, user_id) VALUES
        ('${recipe.title}', '${recipe.ingredients}', '${recipe.description}', '${result[0].user_id}');`;
-        console.log(sql);
         db.query(sql);
       }
     );
-  }, 20);
+  }, 50);
 
   mysqldump({
     connection: {
@@ -130,11 +148,6 @@ app.post("/new-recipe", upload.array("images"), (req, res) => {
     },
     dumpToFile: "./dump.txt",
   });
-});
-
-app.post("/images", upload.array("images"), (req, res) => {
-  const { files, body } = req;
-  console.log(files, body);
 });
 
 const PORT = process.env.PORT || 3000;
