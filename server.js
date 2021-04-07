@@ -14,7 +14,7 @@ app.use(express.json({ limit: "1mb" }));
 
 const db = mysql.createConnection({
   host: "localhost",
-  user: "saurav",
+  user: "root",
   password: "123456",
   database: "recipes",
   insecureAuth: true,
@@ -142,7 +142,7 @@ app.post("/new-recipe", upload.array("images"), (req, res) => {
   mysqldump({
     connection: {
       host: "localhost",
-      user: "saurav",
+      user: "root",
       password: "123456",
       database: "recipes",
     },
